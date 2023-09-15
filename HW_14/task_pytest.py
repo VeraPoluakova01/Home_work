@@ -7,16 +7,17 @@ pytest.
 """
 
 import math
-import doctest
+import pytest
+
+
+def test_1():
+    assert roots_quadratic(1, 2, 1) == 'x1 = x2 = -1.0', 'ошибка тест 1'
+
+def test_2():
+    assert roots_quadratic(4, 2, 1) == 'Корней нет', 'ошибка тест 2'
 
 
 def roots_quadratic(a, b, c):
-    '''Решает квадратные уравнения
-         >>> roots_quadratic(1,2,1 )
-         'x1 = x2 = -1.0'
-         >>> roots_quadratic(4, 2, 1)
-         'Корней нет'
-    '''
     discr = b ** 2 - 4 * a * c
     if discr > 0:
         x1 = (-b + math.sqrt(discr)) / (2 * a)
@@ -30,5 +31,4 @@ def roots_quadratic(a, b, c):
 
 
 if __name__ == '__main__':
-    print(roots_quadratic(4, 2, 1))
-    # doctest.testmod(verbose=True)
+    pytest.main(['-v'])
